@@ -61,6 +61,21 @@ console.log(counter.total());
 // console.log(goldfinger.speak());
 
 
-//extra credit. // once you get done with this, redo it all using the class keyword and a constructor function. 
+// once you get done with this, redo it all using the class keyword and a constructor function. 
+
+// extra credit
+
+// we didn't touch on Recursion in the lecture yet, but you're going to build a recursive function now
+
+
+let n = 10;
+while(n >= 1) {
+  console.log(n);
+  n--;
+}
+// write a function called countDown that does the exact same thing as above, but calls itself until it can't anymore.
+  // hint-> your base case will look like the logic in the while loop.
+
+
 
 
