@@ -34,18 +34,25 @@ function newCharacter (options) {
 };
 
 const playerOne = new newCharacter({typeClass: 'Mage', weaponSelection: 'Staff'});
-console.log(playerOne);  
+console.log(playerOne);
 
 // Fourth Rule * you may want to use your third rule's example to accomplish this
 
+anotherGreeting.greetPerson.call(anotherGreeting, 'Person');
+
 // explain closure
+
+// Closure is a function that is returned by another function and maintains bindings between the variable assignments local to the outer function the closure
+// was create in.
 
 function foo () {
   console.log(this); // what does this point to?
 };
 
+// this will point to the global object
+
 const counterFunction = () => {
-    // this code is broken. figure out why, and tell us where the closure is when you fix it
+  // this code is broken. figure out why, and tell us where the closure is when you fix it
   let count = 0;
   const changeCount = (value) => {
     count += value;
@@ -78,11 +85,17 @@ console.log(counter.total());
   // add a speak() method to your object that when called will log out the car's make model and year.
 
 // when you're done un comment the next few lines and run the file here in node `node app.js`.
+const Car = function(options){
+  this.make = options.make;
+  this.model = options.model;
+  this.year = options.year;
+  this.speak = () => console.log(`${this.model} ${this.year}`);
+}
 
-// const herby = new Car({make: 'Volkswagen', model: 'Beetle', year: '1963'});
-// console.log(herby.speak());
-// const goldfinger = new Car({make: 'Aston Martin', model: 'DB5', year: '1964'});
-// console.log(goldfinger.speak());
+const herby = new Car({make: 'Volkswagen', model: 'Beetle', year: '1963'});
+console.log(herby.speak());
+const goldfinger = new Car({make: 'Aston Martin', model: 'DB5', year: '1964'});
+console.log(goldfinger.speak());
 
 
 // once you get done with this, redo it all using the class keyword and a constructor function.
@@ -99,3 +112,11 @@ while(n >= 1) {
 }
 // write a function called countDown that does the exact same thing as above, but calls itself until it can't anymore.
   // hint-> your base case will look like the logic in the while loop.
+
+const countDown = (n) => {
+  if(n === 0) return;
+  console.log(n);
+  return countDown(n-1);
+};
+
+countDown(10);
