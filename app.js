@@ -34,7 +34,7 @@ function newCharacter (options) {
 };
 
 const playerOne = new newCharacter({typeClass: 'Mage', weaponSelection: 'Staff'});
-console.log(playerOne);
+console.log(playerOne);  
 
 // Fourth Rule * you may want to use your third rule's example to accomplish this
 
@@ -45,7 +45,8 @@ function foo () {
 };
 
 const counterFunction = () => {
-  // this code is broken. figure out why, and tell us where the closure is when you fix it
+    // this code is broken. figure out why, and tell us where the closure is when you fix it
+  let count = 0;
   const changeCount = (value) => {
     count += value;
   };
