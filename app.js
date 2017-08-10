@@ -85,12 +85,22 @@ console.log(counter.total());
   // add a speak() method to your object that when called will log out the car's make model and year.
 
 // when you're done un comment the next few lines and run the file here in node `node app.js`.
-const Car = function(options){
-  this.make = options.make;
-  this.model = options.model;
-  this.year = options.year;
-  this.speak = () => console.log(`${this.model} ${this.year}`);
-}
+// const Car = function(options){
+//   this.make = options.make;
+//   this.model = options.model;
+//   this.year = options.year;
+//   this.speak = () => console.log(`${this.model} ${this.year}`);
+// }
+class Car{
+  constructor(options) {
+    this.make = options.make;
+    this.model = options.model;
+    this.year = options.year;
+    this.speak = () => console.log(`${this.model} ${this.year}`);
+  };
+};
+
+
 
 const herby = new Car({make: 'Volkswagen', model: 'Beetle', year: '1963'});
 console.log(herby.speak());
