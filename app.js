@@ -10,7 +10,7 @@
 // First Rule
 function greet(name) {
   console.log(`Hello ${name}`);
-  console.log(, this);
+  console.log(, this); 
 }
 console.log(, this);
 conosle.log('greet', greet('Allan'));
