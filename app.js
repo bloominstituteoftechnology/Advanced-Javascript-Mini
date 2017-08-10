@@ -1,14 +1,19 @@
 /* The four rules for 'this';
 * in your own words. explain the four rules for the "this" keyword below.
-* 1. 
-* 2. 
-* 3. 
-* 4. 
+* 1. When you have 'this' inside a function in a global scope; its value will be the window object
+* 2. On functions called by a preceding dot; the object before the dot is 'this'
+* 3. 'this' points to an instance of an object when uusing a constructor function
+* 4. 'this' can be explicitly defined when using the call or apply method
 * write out a code example of each explanation above
 */
 
 // First Rule
-
+function greet(name) {
+  console.log(`Hello ${name}`);
+  console.log(, this);
+}
+console.log(, this);
+conosle.log('greet', greet('Allan'));
 // Second Rule
 
 // Third Rule
