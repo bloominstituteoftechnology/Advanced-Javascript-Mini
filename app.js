@@ -1,21 +1,44 @@
 /* The four rules for 'this';
 * in your own words. explain the four rules for the "this" keyword below.
-* 1. 
-* 2. 
-* 3. 
-* 4. 
-* write out a code example of each explanation above
+* 1. Anytime you have a function that happens to be contained in the global scope, the value of "this" when used inside of that function will be set to the window object.
+* 2. If a function is called by a preceding dot, any object that comes before that dot will be "this"
+* 3. When a constructor function is used, "this" in this case, refers to the specific instance of that object that is not only created by also returned by that constructor function.
+* 4. In any circumstance when JavaScript's call or apply method are implemented, "this" is then explicitly defined.
 */
 
 // First Rule
+const welcomeGreeting = (name) => {
+  console.log(`Welcome to the party, ${name}`);
+  console.log(this);
+};
+
+welcomeGreeting('Person');
 
 // Second Rule
+const anotherGreeting = {
+  newGreet: 'Hi, Nice to meet you, ',
+  greetPerson: function(name) {
+    console.log(`${this.newGreet} ${name}`);
+  }
+};
+
+anotherGreeting.greetPerson('Person');
 
 // Third Rule
+function newCharacter (options) {
+  this.typeClass = options.typeClass;
+  this.weaponSelection = options.weaponSelection;
+  this.playerMessage = function() {
+    console.log(`Your player class is ${this.typeClass}` + ` and your weapon of choice is  ${this.weaponSelection}` );
+  }
+};
+
+const playerOne = new newCharacter({typeClass: 'Mage', weaponSelection: 'Staff'});
+console.log(playerOne);
 
 // Fourth Rule * you may want to use your third rule's example to accomplish this
 
-// explain closure 
+// explain closure
 
 function foo () {
   console.log(this); // what does this point to?
@@ -61,7 +84,7 @@ console.log(counter.total());
 // console.log(goldfinger.speak());
 
 
-// once you get done with this, redo it all using the class keyword and a constructor function. 
+// once you get done with this, redo it all using the class keyword and a constructor function.
 
 // extra credit
 
@@ -75,7 +98,3 @@ while(n >= 1) {
 }
 // write a function called countDown that does the exact same thing as above, but calls itself until it can't anymore.
   // hint-> your base case will look like the logic in the while loop.
-
-
-
-
