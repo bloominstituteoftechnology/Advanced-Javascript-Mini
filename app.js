@@ -1,21 +1,52 @@
 /* The four rules for 'this';
 * in your own words. explain the four rules for the "this" keyword below.
-* 1. 
-* 2. 
-* 3. 
-* 4. 
+* 1. When a function is contained in the global scope, the value of this will be the global object.
+* 2. Whenever a function is called with a dot, this is the object before the dot.
+* 3. Whenever a constructor function is used, this refers to the instance of object that was created.
+* 4. Whenever call, apply, or bind is used, this is explicitly defined by the params.
 * write out a code example of each explanation above
 */
 
+/* These examples work well with Quokka */
+
 // First Rule
+
+this.myNewProperty = 'Hello there, this is a property of the global object';
+function enlighten() {
+  return this.myNewProperty;
+}
+console.log(enlighten());
 
 // Second Rule
 
+const someObj = {
+  name: 'func\'s this is someObj, which has a name property',
+  func: function () {
+    return this.name; // I used this right here
+  }
+};
+console.log(someObj.func());
+
 // Third Rule
+
+function Person(name) {
+  this.name = name;
+}
+const p1 = new Person("I am assigned to this instances name property");
+console.log(p1.name);
 
 // Fourth Rule * you may want to use your third rule's example to accomplish this
 
-// explain closure 
+function givemeathis() {
+  return this.msg;
+}
+
+Msg = {msg: 'I gave myself to givemeathis and he used me!'};
+console.log(givemeathis.call(Msg));
+
+// explain closure
+
+/* If you return an enclosed function that function can reference its enclosing scope */
 
 function foo () {
   console.log(this); // what does this point to?
