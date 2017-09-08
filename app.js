@@ -8,20 +8,20 @@
 */
 
 // First Rule
-const Car = function (traits) {
+const Vehicle = function (traits) {
   this.make = traits.make;
   this.size = traits.size;
 };
-const camry = new Car({make: 'toyota', size: 'sedan'});
+const camry = new Vehicle({make: 'toyota', size: 'sedan'});
 camry.message = function () { return `beep beep, i am a ${this.size}`; }
 console.log(camry.message());
 camryBeep = camry.message;
 console.log(camryBeep());
 // Second Rule
-Car.prototype.message = function () { return `beep beep, i am a ${this.size}`; }
+Vehicle.prototype.message = function () { return `beep beep, i am a ${this.size}`; }
 console.log(camry.message());
 // Third Rule
-const tundra = new Car ({make: 'toyota', size: 'truck'});
+const tundra = new Vehicle ({make: 'toyota', size: 'truck'});
 console.log(tundra.message());
 // Fourth Rule * you may want to use your third rule's example to accomplish this
 console.log(camryBeep.call(tundra));
@@ -33,7 +33,7 @@ function foo () {
 
 const counterFunction = () => {
   // this code is broken. figure out why, and tell us where the closure is when you fix it
-  let count; // this count variable was not declared. it could not be declared inside changeCount because count must be accessed at total.
+  let count = 0; // this count variable was not declared. it could not be declared inside changeCount because count must be accessed at total.
   const changeCount = (value) => {
     count += value;
   };
@@ -63,6 +63,13 @@ console.log(counter.total());
   // your options object should have "make", "model", "year" properties on it
   // assign these properties you pass in with options to the constructors 'this' object.
   // add a speak() method to your object that when called will log out the car's make model and year.
+// function Car(options) {
+//   this.make = options.make,
+//   this.model = options.model,
+//   this.year = options.year
+//   this.speak = function () { return`${this.make} ${this.model} ${this.year}`;}
+// }
+
 
 // when you're done un comment the next few lines and run the file here in node `node app.js`.
 
@@ -70,9 +77,27 @@ console.log(counter.total());
 // console.log(herby.speak());
 // const goldfinger = new Car({make: 'Aston Martin', model: 'DB5', year: '1964'});
 // console.log(goldfinger.speak());
+//
 
 
 // once you get done with this, redo it all using the class keyword and a constructor function.
+class Car {
+  constructor (make, model, year) {
+    this.make = make;
+    this.model = model;
+    this.year = year;
+  }
+
+}
+Car.prototype.speak = function() {
+  return `${this.make} ${this.model} ${this.year}`
+}
+const herby = new Car('Volkswagen', 'Beetle', '1963');
+console.log(herby.make);
+console.log(herby.speak());
+const goldfinger = new Car('Aston Martin', 'DB5', '1964');
+console.log(goldfinger.speak());
+
 
 // extra credit
 
@@ -86,3 +111,9 @@ while(n >= 1) {
 }
 // write a function called countDown that does the exact same thing as above, but calls itself until it can't anymore.
   // hint-> your base case will look like the logic in the while loop.
+  const counting = (number) => {
+    console.log(number);
+    number--;
+    if (number >= 1) counting(number);
+  };
+  counting(10);
