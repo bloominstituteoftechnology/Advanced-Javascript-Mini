@@ -140,10 +140,12 @@ while(n >= 1) {
   // hint-> your base case will look like the logic in the while loop.
 
 const countDown = (num) => {
-  if (num > 0) {
-    console.log(num);
-    return countDown(num - 1);
+  console.log(num);
+  if (num === 1) {
+    return num;
   }
+  return countDown(num - 1);
 };
 
+countDown(10);
 
